@@ -1,22 +1,43 @@
 package com.locationdemo.model;
 
-public class Users {
+public class UserModel {
     public String uId;
     public String name;
     public String email;
     public String phoneNumber;
     public String password;
+    public LocationModel location;
 
-    public Users(String name, String email, String phoneNumber, String password) {
+    public  String latitude;
+    public  String longtitute;
+    public   String timestamp;
+
+
+
+
+    public UserModel(String name, String phoneNumber) {
         this.name = name;
-        this.email = email;
         this.phoneNumber = phoneNumber;
-        this.password = password;
+
     }
 
-    public Users(String email) {
+    public UserModel(String latitude, String longtitute, String timestamp) {
+        this.latitude = latitude;
+        this.longtitute = longtitute;
+        this.timestamp = timestamp;
+    }
 
-        this.email = email;
+
+    public UserModel(LocationModel locationModel) {
+        location = locationModel;
+    }
+
+    public LocationModel getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationModel location) {
+        this.location = location;
     }
 
     public String getuId() {
@@ -58,4 +79,6 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

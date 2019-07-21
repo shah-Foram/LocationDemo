@@ -1,34 +1,19 @@
 package com.locationdemo.util;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.location.LocationManager;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.provider.Settings;
-
-
-import android.text.Html;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.locationdemo.R;
-
-import java.io.File;
-import java.util.Locale;
 
 
 /**
@@ -43,7 +28,7 @@ public class Utils {
      * @param showMessage if true will show enable GPS alert with got to settings option otherwise check silently
      * @return true if location enabled otherwise false
      */
-    public static boolean checkLocationAccess(final Activity activity, boolean showMessage) {
+    public static boolean checkLocationAccess(final AppCompatActivity activity, boolean showMessage) {
         if (activity != null && !activity.isFinishing()) {
             final LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
             boolean isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -92,15 +77,6 @@ public class Utils {
         return !TextUtils.isEmpty(emailId) && Patterns.EMAIL_ADDRESS.matcher(emailId).matches();
     }
 
-    /**
-     * Validates the Url
-     *
-     * @param url email id to be verified
-     * @return true valid email id, false invalid emailid
-     */
-    public static boolean isValidUrl(final String url) {
-        return !TextUtils.isEmpty(url) && Patterns.WEB_URL.matcher(url).matches();
-    }
 
 
     /**

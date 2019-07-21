@@ -4,38 +4,48 @@ package com.locationdemo.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.Nullable;
+import android.view.Window;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.locationdemo.R;
 
 
 /**
  * Simple startup activity showing static image.
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends AppCompatActivity {
 
     /*
      * Handler is used to set some delay on this screen
      */
     private Handler handler;
+
+    protected FirebaseAuth firebaseAuth;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            final Intent homeIntent = new Intent(SplashActivity.this, SignupActivity.class);
-            startActivity(homeIntent);
-            finish();
+            if(firebaseAuth.getCurrentUser()!=null){
+                startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                finish();
+            }
+            else {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+               finish();
+            }
         }
     };
 
-    @Override
-    protected int defineLayoutResource() {
-        return R.layout.activity_splash;
-    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_splash);
+        firebaseAuth = FirebaseAuth.getInstance();
         if (isDuplicateInstance()) {//return if this is duplicate instance of same category and instance
             return;
         }
@@ -48,9 +58,6 @@ public class SplashActivity extends BaseActivity {
         handler.postDelayed(runnable, INTERVAL);
     }
 
-    @Override
-    protected void initializeComponents() {
-    }
 
     /**
      * This method will prevent multiple instances of an activity when it is launched with different intents
@@ -73,5 +80,10 @@ public class SplashActivity extends BaseActivity {
             handler.removeCallbacks(runnable);
             finish();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }
