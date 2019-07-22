@@ -42,6 +42,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+
+/***
+ * This activity is called after sucessful login and this class display location list from firebase database
+ */
 public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
     public static final int MULTIPLE_PERMISSIONS = 10; // code you want.
 
@@ -97,6 +101,9 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
         }
     }
 
+    /***
+     * Fetch Lat lng from firebase database and display in recyclerview
+     */
     private void displayLocation() {
         locationList.clear();
         adapter.notifyDataSetChanged();
@@ -127,8 +134,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        // Getting Post failed, log a message
-                     swipeRefreshLayout.setRefreshing(false);
+                        swipeRefreshLayout.setRefreshing(false);
 
                     }
                 };
@@ -152,6 +158,10 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
             if (addresses.size() != 0) {
                 String address = addresses.get(0).getAddressLine(0);
+
+                /***
+                 * Below information we can use as and when needed to show full address from lat lng
+                 */
                 String city = addresses.get(0).getLocality();
                 String state = addresses.get(0).getAdminArea();
                 String country = addresses.get(0).getCountryName();

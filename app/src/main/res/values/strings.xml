@@ -24,4 +24,5 @@
     <string name="no_locations_found">No Locations Found</string>
     <string name="enter_valid_email">Enter valid email id</string>
     <string name="signup_sucessful">Signed up sucessfully!</string>
+    <string name="sign_up_here">Sign Up Here</string>
 </resources>

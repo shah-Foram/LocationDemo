@@ -68,7 +68,7 @@ public class BackgroundLocationUpdateService extends Service implements GoogleAp
     private LocationRequest mLocationRequest;
     private Location mCurrentLocation;
     // The minimum time between updates in milliseconds
-    private static final long INTERVAL = 1000*60;  //10 min
+    private static final long INTERVAL = 1000*60*2; //2 min
     private static final long   FASTEST_INTERVAL = 1000*60;
 
 

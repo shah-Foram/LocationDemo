@@ -21,6 +21,9 @@ import com.locationdemo.util.Utils;
 
 import java.util.logging.Handler;
 
+/***
+ * Firebase login class
+ */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private TextInputEditText  etdEmail;

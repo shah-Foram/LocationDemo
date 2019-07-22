@@ -27,11 +27,6 @@ public class AndroidApp extends Application {
         androidApp = this;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
-
-// ...
-
-
-
     }
 
     public DatabaseReference getmDatabase() {

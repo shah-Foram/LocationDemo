@@ -22,52 +22,6 @@ import com.locationdemo.R;
 public class Utils {
 
     /**
-     * checks the GPS is enable or not
-     *
-     * @param activity    object required for get SystemService
-     * @param showMessage if true will show enable GPS alert with got to settings option otherwise check silently
-     * @return true if location enabled otherwise false
-     */
-    public static boolean checkLocationAccess(final AppCompatActivity activity, boolean showMessage) {
-        if (activity != null && !activity.isFinishing()) {
-            final LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
-            boolean isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-            boolean isGpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-            if (isNetworkEnabled) {
-                return true;
-            } else if (isGpsEnabled) {
-                return true;
-            }
-
-            if (showMessage) {
-                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity);
-                dialogBuilder.setTitle(activity.getString(R.string.app_name));
-                dialogBuilder.setCancelable(false);
-                dialogBuilder.setMessage(activity.getString(R.string.alert_check_gps));
-
-                dialogBuilder.setPositiveButton(activity.getString(R.string.settings), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                        activity.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                });
-
-                dialogBuilder.setNegativeButton(activity.getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface mDialog, int id) {
-                        mDialog.dismiss();
-                    }
-                });
-                dialogBuilder.show();
-
-                return false;
-            }
-        }
-        return false;
-    }
-
-
-    /**
      * Validates the Email Id
      *
      * @param emailId email id to be verified

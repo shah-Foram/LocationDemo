@@ -27,6 +27,10 @@ import com.locationdemo.model.UserModel;
 import com.locationdemo.util.Preference;
 import com.locationdemo.util.Utils;
 
+
+/***
+ * Firebase registration class
+ */
 public class SignupActivity extends BaseActivity implements View.OnClickListener {
 
     private TextInputEditText etdName;
@@ -79,6 +83,12 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
             }
     }
 
+
+    /***
+     * Call firebase default registration method for new users and also push user's other information in user table
+     * @param email
+     * @param password
+     */
     private void signUp(String email, final String password) {
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -163,8 +173,6 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         }
 
         return result;
-
-
     }
 
 

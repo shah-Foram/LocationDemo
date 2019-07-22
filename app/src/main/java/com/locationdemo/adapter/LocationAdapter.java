@@ -16,16 +16,20 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+
+/***
+ * Adapter to display locations in recyclerview
+ */
 public class LocationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context ;
     private ArrayList<LocationModel> locationList;
-public  LocationAdapter(final Context context , final ArrayList<LocationModel> locationList)
-{
+        public  LocationAdapter(final Context context , final ArrayList<LocationModel> locationList)
+        {
 
-    this.context = context ;
-    this.locationList = locationList;
-}
+            this.context = context ;
+            this.locationList = locationList;
+        }
 
 
     @NonNull
@@ -39,7 +43,6 @@ public  LocationAdapter(final Context context , final ArrayList<LocationModel> l
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final MyViewHolder myViewHolder = (MyViewHolder) holder;
         LocationModel model = locationList.get(position);
-
         myViewHolder.tvLocation.setText(model.getLocation());
         myViewHolder.tvLat.setText(model.getLatitude());
         myViewHolder.tvLng.setText(model.getLongtitute());
@@ -55,8 +58,6 @@ public  LocationAdapter(final Context context , final ArrayList<LocationModel> l
         TextView tvLocation;
         TextView tvLat;
         TextView tvLng;
-
-
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
